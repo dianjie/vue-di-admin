@@ -20,7 +20,7 @@ import HelloWorld from './components/HelloWorld.vue'
   <RouterView />
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -36,24 +36,24 @@ nav {
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
-}
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+  a {
+    display: inline-block;
+    padding: 0 1rem;
+    border-left: 1px solid var(--color-border);
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+    &.router-link-exact-active {
+      color: var(--color-text);
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+      &:hover {
+        background-color: transparent;
+      }
+    }
 
-nav a:first-of-type {
-  border: 0;
+    &:first-of-type {
+      border: 10 px;
+    }
+  }
 }
 
 @media (min-width: 1024px) {
@@ -77,7 +77,6 @@ nav a:first-of-type {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
-
     padding: 1rem 0;
     margin-top: 1rem;
   }
