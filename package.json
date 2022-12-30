@@ -1,5 +1,16 @@
 {
   "name": "vue-dianjie-admin",
+  "author": {
+    "name": "dianjie",
+    "email": "dianjie1022@gmail.com",
+    "url": "https://github.com/dianjie"
+  },
+  "repository": "https://github.com/dianjie/vue-dianjie-admin.git",
+  "bugs": "https://github.com/dianjie/vue-dianjie-admin/issues",
+  "homepage": "https://github.com/dianjie/vue-dianjie-admin",
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -70,5 +81,6 @@
     "*.md": [
       "prettier --write"
     ]
-  }
+  },
+  "license": "MIT"
 }
