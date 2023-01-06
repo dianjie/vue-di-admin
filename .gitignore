@@ -30,3 +30,7 @@ coverage
 *.sw?
 
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
+auto-imports.d.ts
+components.d.ts

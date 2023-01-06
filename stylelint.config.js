@@ -6,6 +6,9 @@ module.exports = {
   ],
   plugins: ['stylelint-order'],
   customSyntax: 'postcss-html',
+  rules: {
+    'no-empty-source': null
+  },
   overrides: [
     {
       files: ['*.less', '**/*.less'],
