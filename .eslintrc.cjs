@@ -15,5 +15,19 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
-  }
+  },
+  overrides: [
+    {
+      files: ['*.vue', '**/*.vue'],
+      rules: {
+        'vue/component-name-in-template-casing': ['error', 'kebab-case'],
+        'vue/component-tags-order': [
+          'error',
+          {
+            order: ['template', 'script', 'style']
+          }
+        ]
+      }
+    }
+  ]
 }
