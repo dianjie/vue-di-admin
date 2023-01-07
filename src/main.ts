@@ -4,8 +4,6 @@ import App from './App.vue'
 import router from './router'
 import { setupStore } from '@/stores'
 
-import './assets/main.css'
-
 const bootstrap = () => {
   const app = createApp(App)
 
