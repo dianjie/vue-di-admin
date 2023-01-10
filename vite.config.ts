@@ -21,21 +21,14 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       vue(),
       vueJsx(),
       AutoImport({
-        resolvers: [
-          ElementPlusResolver(),
-          // 自动导入图标组件
-          IconsResolver({
-            prefix: 'Icon'
-          })
-        ]
+        resolvers: [ElementPlusResolver()]
       }),
       Components({
         resolvers: [
           ElementPlusResolver(),
+          // https://github.com/antfu/unplugin-icons
           // 自动注册图标组件
-          IconsResolver({
-            enabledCollections: ['ep']
-          })
+          IconsResolver()
         ]
       }),
       Icons({
