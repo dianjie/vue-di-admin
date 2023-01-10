@@ -9,6 +9,7 @@ import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
+import { prefix } from './src/config/design'
 const CWD = process.cwd()
 
 // https://vitejs.dev/config/
@@ -41,6 +42,18 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         autoInstall: true
       })
     ],
+    css: {
+      preprocessorOptions: {
+        less: {
+          modifyVars: {
+            // 全局公共前缀
+            '@prefix-var': prefix
+          },
+          math: 'strict',
+          javascriptEnabled: true
+        }
+      }
+    },
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
