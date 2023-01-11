@@ -26,6 +26,12 @@ module.exports = {
           {
             order: ['template', 'script', 'style']
           }
+        ],
+        'vue/multi-word-component-names': [
+          'error',
+          {
+            ignores: ['index'] //需要忽略的组件名
+          }
         ]
       }
     }
