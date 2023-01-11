@@ -18,6 +18,7 @@ import { useDesign } from '@/hooks/web/useDesign'
 const drawer = ref(false)
 
 const { prefixCls } = useDesign('layout-config')
+const tempId = `scroll_locker_${+new Date()}_1`
 
 const classCls = computed(() => [
   {
@@ -26,8 +27,47 @@ const classCls = computed(() => [
   }
 ])
 
+const getScrollbarWidth = () => {
+  const scrollDiv = document.createElement('div')
+  scrollDiv.style.cssText =
+    'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;'
+  document.body.appendChild(scrollDiv)
+  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+  document.body.removeChild(scrollDiv)
+  return scrollbarWidth
+}
+
+const styleEl = ref()
+const styleTimer = ref()
+
+const lockScrollFunc = () => {
+  const hasScrollBar = window.innerWidth - document.documentElement.clientWidth > 0
+  // 滚动条
+  const scrollBarSize = hasScrollBar ? getScrollbarWidth() : 0
+
+  styleEl.value = document.createElement('style')
+  styleEl.value.dataset.id = tempId
+  const _cssData = `html,body {width: ${
+    scrollBarSize !== 0 ? `calc(100% - ${scrollBarSize}px)` : undefined
+  };overflow: hidden;}`
+  styleEl.value.appendChild(document.createTextNode(_cssData))
+  document.head.appendChild(styleEl.value)
+}
+
+const clearStyleFunc = () => {
+  clearTimeout(styleTimer.value)
+  styleTimer.value = setTimeout(() => {
+    styleEl.value?.parentNode?.removeChild?.(styleEl.value)
+  }, 150)
+}
+
 const toggleDrawer = () => {
   drawer.value = !unref(drawer)
+  if (drawer.value) {
+    lockScrollFunc()
+  } else {
+    clearStyleFunc()
+  }
 }
 </script>
 
@@ -40,7 +80,7 @@ const toggleDrawer = () => {
   right: 0;
   width: 0;
   height: 100%;
-  transition: width 0s ease 0.3s, height 0s ease 0.3s;
+  transition: width 0s ease 0.2, height 0s ease 0.2;
 
   &-mask {
     position: absolute;
@@ -61,7 +101,7 @@ const toggleDrawer = () => {
     width: 300px;
     height: 100%;
     transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.28s cubic-bezier(0.38, 0, 0.24, 1);
   }
 
   &-button {
@@ -100,7 +140,7 @@ const toggleDrawer = () => {
         opacity: 1;
         height: 100%;
         pointer-events: auto;
-        transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1), height 0s ease 0.3s;
+        transition: opacity 0.2s cubic-bezier(0.38, 0, 0.24, 1);
       }
     }
   }
