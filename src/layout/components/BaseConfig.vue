@@ -6,7 +6,18 @@
         <i-ep-setting width="1.5rem" height="1.5rem" v-if="!drawer" />
         <i-ep-close width="1.5rem" height="1.5rem" v-else />
       </el-button>
-      <div :class="`${prefixCls}-content`"> </div>
+      <div :class="`${prefixCls}-content`">
+        <div :class="`${prefixCls}-header`">
+          <h5 :class="`${prefixCls}-header__title`">主题定制</h5>
+          <span :class="`${prefixCls}-header__desc`">
+            Di Admin 为布局、顶部栏、菜单等提供了不同的主题。
+          </span>
+          <hr />
+        </div>
+        <el-scrollbar>
+          <config-size />
+        </el-scrollbar>
+      </div>
     </div>
   </div>
 </template>
@@ -14,6 +25,7 @@
 <script setup lang="ts">
 import { computed, ref, unref } from 'vue'
 import { useDesign } from '@/hooks/web/useDesign'
+import ConfigSize from './ConfigSize.vue'
 
 const drawer = ref(false)
 
@@ -80,7 +92,6 @@ const toggleDrawer = () => {
   right: 0;
   width: 0;
   height: 100%;
-  transition: width 0s ease 0.2, height 0s ease 0.2;
 
   &-mask {
     position: absolute;
@@ -123,9 +134,46 @@ const toggleDrawer = () => {
   &-content {
     position: relative;
     height: 100vh;
-    padding: 1em;
     overflow: auto;
     background-color: #fff;
+
+    :deep(.el-scrollbar) {
+      margin-top: 97px;
+      height: calc(100% - 97px);
+      padding-bottom: 1rem;
+    }
+
+    :deep(.el-scrollbar__wrap) {
+      padding: 0 1rem;
+    }
+
+    :deep(.el-divider__text) {
+      font-weight: 600;
+    }
+  }
+
+  &-header {
+    padding: 1rem 0.65rem 0;
+    position: absolute;
+    top: 0;
+
+    &__title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &__desc {
+      display: block;
+      font-size: 12px;
+      line-height: normal;
+      color: var(--el-color-info);
+    }
+
+    hr {
+      border-top: solid #e4e4e4;
+      border-width: 1px 0 0;
+      margin-top: 1rem;
+    }
   }
 
   &--open {

@@ -19,6 +19,7 @@ const { language, size, sideMenu } = storeToRefs(store)
 const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en))
 
 provide('sideMenu', sideMenu)
+provide('size', size)
 </script>
 
 <style scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div :class="prefixCls">
+  <div :class="classCls">
     <base-header />
     <base-menu />
     <base-content />
@@ -14,8 +14,31 @@ import BaseContent from './components/BaseContent.vue'
 import BaseConfig from './components/BaseConfig.vue'
 
 import { useDesign } from '@/hooks/web/useDesign'
+import { computed, inject, unref } from 'vue'
 
 const { prefixCls } = useDesign('layout-wrapper')
+
+const size = inject<string>('size')
+
+const classCls = computed(() => [
+  {
+    [prefixCls]: true,
+    [`${prefixCls}--${unref(size)}`]: true
+  }
+])
 </script>
 
-<style scoped></style>
+<style lang="less" scoped>
+@prefix-cls: ~'@{prefix-var}-layout-wrapper';
+.@{prefix-cls} {
+  &--small {
+    --di-header-height: 46px;
+    --di-menu-horizontal-height: 32px;
+  }
+
+  &--large {
+    --di-header-height: 66px;
+    --di-menu-horizontal-height: 52px;
+  }
+}
+</style>

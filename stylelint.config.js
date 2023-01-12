@@ -7,7 +7,8 @@ module.exports = {
   plugins: ['stylelint-order'],
   customSyntax: 'postcss-html',
   rules: {
-    'no-empty-source': null
+    'no-empty-source': null,
+    'selector-class-pattern': null
   },
   overrides: [
     {
