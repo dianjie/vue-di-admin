@@ -16,6 +16,7 @@
         </div>
         <el-scrollbar>
           <config-size />
+          <config-menu />
         </el-scrollbar>
       </div>
     </div>
@@ -26,6 +27,7 @@
 import { computed, ref, unref } from 'vue'
 import { useDesign } from '@/hooks/web/useDesign'
 import ConfigSize from './ConfigSize.vue'
+import ConfigMenu from './ConfigMenu.vue'
 
 const drawer = ref(false)
 

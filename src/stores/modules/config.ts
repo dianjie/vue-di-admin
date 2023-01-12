@@ -1,19 +1,18 @@
 import { defineStore } from 'pinia'
-
-type LanguageType = 'zh-cn' | 'en'
-type SizeType = 'large' | 'default' | 'small'
-
+import type { LanguageType, SizeType, MenuModeType } from '#/config'
 interface ConfigState {
   language: LanguageType
   size: SizeType
   sideMenu: boolean
+  menuMode: MenuModeType
 }
 
 export const useConfigStore = defineStore('app-config', {
   state: (): ConfigState => ({
     language: 'zh-cn',
     size: 'default',
-    sideMenu: true
+    sideMenu: true,
+    menuMode: 'default'
   }),
   getters: {
     getLanguageConfig(): LanguageType {
@@ -24,6 +23,18 @@ export const useConfigStore = defineStore('app-config', {
     },
     getSideMenuConfig(): boolean {
       return this.sideMenu
+    },
+    getMenuModeConfig(): MenuModeType {
+      return this.menuMode
+    },
+    menuModeIsDefault(): boolean {
+      return this.menuMode === 'default'
+    },
+    menuModeIsOverlay(): boolean {
+      return this.menuMode === 'overlay'
+    },
+    menuModeIsHorizontal(): boolean {
+      return this.menuMode === 'horizontal'
     }
   },
   actions: {
@@ -35,6 +46,9 @@ export const useConfigStore = defineStore('app-config', {
     },
     setSideMenuConfig(val: boolean) {
       this.sideMenu = val
+    },
+    setMenuModeConfig(val: MenuModeType) {
+      this.menuMode = val
     },
     toggleSideMenu() {
       this.setSideMenuConfig(!this.sideMenu)

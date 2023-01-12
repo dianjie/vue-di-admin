@@ -1,6 +1,6 @@
 <template>
   <div :class="classCls">
-    <el-menu default-active="2" mode="vertical">
+    <el-menu default-active="2" :mode="modeProp">
       <el-sub-menu index="1">
         <template #title>
           <el-icon><i-ep-location /></el-icon>
@@ -37,17 +37,33 @@
 <script setup lang="ts">
 import { useDesign } from '@/hooks/web/useDesign'
 import { computed, inject, unref } from 'vue'
+import { useConfigStore } from '@/stores/modules/config'
+import { storeToRefs } from 'pinia'
 
 const { prefixCls } = useDesign('menu-wrapper')
 
 const sideMenu = inject<boolean>('sideMenu')
+const store = useConfigStore()
+const { menuModeIsDefault, menuModeIsOverlay, menuModeIsHorizontal } = storeToRefs(store)
 
 const classCls = computed(() => [
   {
     [prefixCls]: true,
-    [`${prefixCls}--default`]: !unref(sideMenu)
+    [`${prefixCls}--default`]: unref(menuModeIsDefault) && !unref(sideMenu),
+    [`${prefixCls}--overlay`]: unref(menuModeIsOverlay) && !unref(sideMenu),
+    [`${prefixCls}--horizontal`]: unref(menuModeIsHorizontal)
   }
 ])
+
+const modeProp = computed(() => {
+  if (unref(menuModeIsDefault) || unref(menuModeIsOverlay)) {
+    return 'vertical'
+  } else if (unref(menuModeIsHorizontal)) {
+    return 'horizontal'
+  } else {
+    return 'vertical'
+  }
+})
 </script>
 
 <style lang="less" scoped>
@@ -61,6 +77,15 @@ const classCls = computed(() => [
   top: var(--di-header-height);
   z-index: 100;
   transform: none;
+
+  :deep(.el-menu) {
+    height: 100%;
+    padding: 0 1rem;
+  }
+
+  :deep(.el-sub-menu__title) {
+    padding-left: 0;
+  }
 
   &--default,
   &--overlay {
