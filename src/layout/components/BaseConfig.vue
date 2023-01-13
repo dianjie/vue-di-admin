@@ -15,6 +15,7 @@
           <hr />
         </div>
         <el-scrollbar>
+          <config-theme />
           <config-size />
           <config-menu />
         </el-scrollbar>
@@ -28,6 +29,7 @@ import { computed, ref, unref } from 'vue'
 import { useDesign } from '@/hooks/web/useDesign'
 import ConfigSize from './ConfigSize.vue'
 import ConfigMenu from './ConfigMenu.vue'
+import ConfigTheme from './ConfigTheme.vue'
 
 const drawer = ref(false)
 
@@ -137,7 +139,9 @@ const toggleDrawer = () => {
     position: relative;
     height: 100vh;
     overflow: auto;
-    background-color: #fff;
+    background-color: var(--el-bg-color);
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%),
+      0 9px 46px 8px rgb(0 0 0 / 12%);
 
     :deep(.el-scrollbar) {
       margin-top: 97px;
@@ -172,7 +176,7 @@ const toggleDrawer = () => {
     }
 
     hr {
-      border-top: solid #e4e4e4;
+      border-top: 1px var(--el-border-color) var(--el-border-style);
       border-width: 1px 0 0;
       margin-top: 1rem;
     }

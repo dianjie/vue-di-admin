@@ -9,6 +9,7 @@ import { computed, provide } from 'vue'
 import { RouterView } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useConfigStore } from '@/stores/modules/config'
+import { isDark } from '@/hooks/web/useDark'
 
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
@@ -20,6 +21,7 @@ const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en))
 
 provide('sideMenu', sideMenu)
 provide('size', size)
+provide('isDark', isDark)
 </script>
 
 <style scoped></style>
