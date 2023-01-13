@@ -1,6 +1,6 @@
 <template>
   <el-divider>全局组件大小</el-divider>
-  <el-radio-group v-model="store.size" style="justify-content: center; display: flex">
+  <el-radio-group v-model="store.size" class="flex justify-center">
     <el-radio-button label="small">小</el-radio-button>
     <el-radio-button label="default">默认</el-radio-button>
     <el-radio-button label="large">大</el-radio-button>
