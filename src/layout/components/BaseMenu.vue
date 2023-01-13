@@ -80,7 +80,6 @@ const modeProp = computed(() => {
 
   :deep(.el-menu) {
     height: 100%;
-    padding: 0 1rem;
   }
 
   :deep(.el-sub-menu__title) {
@@ -100,6 +99,10 @@ const modeProp = computed(() => {
   &--horizontal {
     width: 100%;
     height: var(--di-menu-horizontal-height);
+
+    :deep(.el-menu) {
+      padding: 0 1rem;
+    }
   }
 }
 </style>
