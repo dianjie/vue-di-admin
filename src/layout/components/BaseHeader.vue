@@ -21,6 +21,11 @@
           <i-mdi-github />
         </el-icon>
       </el-tooltip>
+      <el-tooltip content="组件主题色" placement="bottom" :class="`${prefixCls}-right__item`">
+        <div :class="`${prefixCls}-right__item`">
+          <el-color-picker v-model="configStore.componentTheme" @change="changeComponentTheme" />
+        </div>
+      </el-tooltip>
     </div>
   </header>
 </template>
@@ -32,6 +37,7 @@ import { useConfigStore } from '@/stores/modules/config'
 import type { SizeType } from '#/config'
 import { storeToRefs } from 'pinia'
 import pgk from '../../../package.json'
+import { changeComponentTheme } from '@/hooks/web/useComponentTheme'
 
 const { prefixCls } = useDesign('layout-header')
 
