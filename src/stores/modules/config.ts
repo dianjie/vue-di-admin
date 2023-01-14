@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia'
 import type { LanguageType, SizeType, MenuModeType } from '#/config'
+import { changeComponentTheme } from '@/hooks/web/useComponentTheme'
 interface ConfigState {
   language: LanguageType
   size: SizeType
   sideMenu: boolean
   menuMode: MenuModeType
+  componentTheme: string
 }
 
 export const useConfigStore = defineStore('app-config', {
@@ -12,7 +14,8 @@ export const useConfigStore = defineStore('app-config', {
     language: 'zh-cn',
     size: 'default',
     sideMenu: true,
-    menuMode: 'default'
+    menuMode: 'default',
+    componentTheme: '#409EFF'
   }),
   getters: {
     getLanguageConfig(): LanguageType {
@@ -35,6 +38,9 @@ export const useConfigStore = defineStore('app-config', {
     },
     menuModeIsHorizontal(): boolean {
       return this.menuMode === 'horizontal'
+    },
+    getComponentTheme(): string {
+      return this.componentTheme
     }
   },
   actions: {
@@ -52,7 +58,15 @@ export const useConfigStore = defineStore('app-config', {
     },
     toggleSideMenu() {
       this.setSideMenuConfig(!this.sideMenu)
+    },
+    setComponentTheme(val: string) {
+      this.componentTheme = val
     }
   },
-  persist: true
+  persist: {
+    afterRestore: ({ store }) => {
+      // 恢复自定义主题色
+      changeComponentTheme(store.componentTheme)
+    }
+  }
 })

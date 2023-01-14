@@ -14,7 +14,9 @@ import { toggleDark } from '@/hooks/web/useDark'
 import { inject } from 'vue'
 
 const isDark = inject('isDark') as boolean
-const handleThemeChange = () => toggleDark
+const handleThemeChange = () => {
+  toggleDark()
+}
 </script>
 
 <style lang="less" scoped></style>

@@ -18,6 +18,7 @@
           <config-theme />
           <config-size />
           <config-menu />
+          <component-themes />
         </el-scrollbar>
       </div>
     </div>
@@ -30,6 +31,7 @@ import { useDesign } from '@/hooks/web/useDesign'
 import ConfigSize from './ConfigSize.vue'
 import ConfigMenu from './ConfigMenu.vue'
 import ConfigTheme from './ConfigTheme.vue'
+import ComponentThemes from './ComponentThemes.vue'
 
 const drawer = ref(false)
 
