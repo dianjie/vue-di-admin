@@ -15,7 +15,13 @@
       </el-button>
     </div>
     <div style="flex: 1 1 0%"> </div>
-    <div :class="`${prefixCls}-right`"> 右侧按钮区块 </div>
+    <div :class="`${prefixCls}-right`">
+      <el-tooltip content="代码仓库" placement="bottom">
+        <el-icon :class="iconBtnCls" @click="navToGitHub">
+          <i-mdi-github />
+        </el-icon>
+      </el-tooltip>
+    </div>
   </header>
 </template>
 
@@ -25,6 +31,7 @@ import { useDesign } from '@/hooks/web/useDesign'
 import { useConfigStore } from '@/stores/modules/config'
 import type { SizeType } from '#/config'
 import { storeToRefs } from 'pinia'
+import pgk from '../../../package.json'
 
 const { prefixCls } = useDesign('layout-header')
 
@@ -52,6 +59,18 @@ const handleCls = computed(() => [
     'side-menu-open': unref(sideMenu)
   }
 ])
+
+const iconBtnCls = computed(() => [
+  {
+    'icon-btn': true,
+    [`icon-btn--${unref(size)}`]: true,
+    [`${prefixCls}-right__item`]: true
+  }
+])
+
+const navToGitHub = () => {
+  window.open(pgk.homepage)
+}
 </script>
 
 <style lang="less" scoped>
@@ -105,7 +124,33 @@ const handleCls = computed(() => [
   }
 
   &-right {
+    display: flex;
     padding-right: 12px;
+
+    &__item {
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .icon-btn {
+      font-size: 24px;
+      cursor: pointer;
+
+      &--small {
+        font-size: 24px;
+      }
+
+      &--default {
+        font-size: 32px;
+      }
+
+      &--large {
+        font-size: 40px;
+      }
+    }
   }
 }
 </style>
