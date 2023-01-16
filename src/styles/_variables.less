@@ -2,17 +2,15 @@
   --di-header-height: 56px;
   --di-menu-side-width: 210px;
   --di-menu-horizontal-height: 42px;
-}
-
-:root,
-:root[theme-mode='light'] {
   --di-scrollbar-color: rgb(0 0 0 / 10%);
   --di-scrollbar-hover-color: rgb(0 0 0 / 30%);
   --di-scroll-track-color: #fff;
 }
 
-:root[theme-mode='dark'] {
-  --di-scrollbar-color: rgb(255 255 255 / 10%);
-  --di-scrollbar-hover-color: rgb(255 255 255 / 30%);
-  --di-scroll-track-color: #333;
+html {
+  &.dark {
+    --di-scrollbar-color: rgb(255 255 255 / 10%);
+    --di-scrollbar-hover-color: rgb(255 255 255 / 30%);
+    --di-scroll-track-color: #333;
+  }
 }
