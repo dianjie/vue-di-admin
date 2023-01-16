@@ -19,6 +19,7 @@
           <config-size />
           <config-menu />
           <component-themes />
+          <topbar-themes />
         </el-scrollbar>
       </div>
     </div>
@@ -32,6 +33,7 @@ import ConfigSize from './ConfigSize.vue'
 import ConfigMenu from './ConfigMenu.vue'
 import ConfigTheme from './ConfigTheme.vue'
 import ComponentThemes from './ComponentThemes.vue'
+import TopbarThemes from './TopbarThemes.vue'
 
 const drawer = ref(false)
 

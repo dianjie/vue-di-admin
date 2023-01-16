@@ -88,14 +88,14 @@ const navToGitHub = () => {
   border-bottom: 1px solid var(--el-border-color);
   height: var(--di-header-height);
   min-height: 35px;
-  background-image: radial-gradient(transparent 1px, var(--el-bg-color) 1px);
-  background-size: 4px 4px;
-  backdrop-filter: saturate(50%) blur(4px);
+  background-color: var(--di-header-bg-color);
+  color: var(--di-header-text-color);
   transition: height linear 0.2s;
 
   &--fixed {
     position: fixed;
     top: 0;
+    z-index: 998;
   }
 
   &-logo {

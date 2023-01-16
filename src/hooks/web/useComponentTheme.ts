@@ -3,7 +3,7 @@ import { useStyleTag } from '@vueuse/core'
 import { useConfigStore } from '@/stores/modules/config'
 
 // https://github.com/PimpTrizkit/PJs/wiki/12.-Shade,-Blend-and-Convert-a-Web-Color-(pSBC.js)#stackoverflow-archive-begin
-const shadeHexColor = (color: string, percent: number) => {
+export const shadeHexColor = (color: string, percent: number) => {
   const f = parseInt(color.slice(1), 16),
     t = percent < 0 ? 0 : 255,
     p = percent < 0 ? percent * -1 : percent,
