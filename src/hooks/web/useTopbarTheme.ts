@@ -13,7 +13,7 @@ type rgbType = {
   b: number
 } | null
 
-const hexToRgb = (hex: string): rgbType => {
+export const hexToRgb = (hex: string): rgbType => {
   // turn hex val to RGB
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
@@ -26,7 +26,7 @@ const hexToRgb = (hex: string): rgbType => {
 }
 
 // https://www.zhangxinxu.com/wordpress/2021/06/js-image-colorful-or-pure/
-const colorDistance = (RGB1: rgbType, RGB2: rgbType) => {
+export const colorDistance = (RGB1: rgbType, RGB2: rgbType) => {
   if (!RGB1 || !RGB2) return 0
   const { r: r1, g: g1, b: b1 } = RGB1
   const { r: r2, g: g2, b: b2 } = RGB2
@@ -39,7 +39,7 @@ const colorDistance = (RGB1: rgbType, RGB2: rgbType) => {
   return Math.sqrt((2 + rmean / 256) * r * r + 4 * g * g + (2 + (255 - rmean) / 256) * b * b)
 }
 
-const getTextColor = (hex: string) => {
+export const getTextColor = (hex: string) => {
   const bgColor = hexToRgb(hex)
   const textColor = shadeHexColor(hex, 0.95)
   const RGBTextColor = hexToRgb(textColor)
@@ -56,7 +56,7 @@ export const changeTopbarTheme = (color: string | null) => {
   if (isDark.value) {
     defaultColor = '#151515'
   } else {
-    defaultColor = '#FFFFFF'
+    defaultColor = '#ffffff'
   }
   if (!color) {
     const configStore = useConfigStore()

@@ -77,7 +77,6 @@ const modeProp = computed(() => {
   top: var(--di-header-height);
   z-index: 100;
   transform: none;
-  background-color: var(--el-bg-color);
 
   :deep(.el-menu) {
     height: 100%;

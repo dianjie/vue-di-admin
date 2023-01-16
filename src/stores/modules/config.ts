@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import type { LanguageType, SizeType, MenuModeType } from '#/config'
 import { changeComponentTheme } from '@/hooks/web/useComponentTheme'
 import { changeTopbarTheme } from '@/hooks/web/useTopbarTheme'
+import { changeMenuTheme } from '@/hooks/web/useMenuTheme'
 interface ConfigState {
   language: LanguageType
   size: SizeType
@@ -9,6 +10,7 @@ interface ConfigState {
   menuMode: MenuModeType
   componentTheme: string
   topbarTheme: string
+  menuTheme: string
 }
 
 export const useConfigStore = defineStore('app-config', {
@@ -18,7 +20,8 @@ export const useConfigStore = defineStore('app-config', {
     sideMenu: true,
     menuMode: 'default',
     componentTheme: '#409EFF',
-    topbarTheme: '#FFFFFF'
+    topbarTheme: '#FFFFFF',
+    menuTheme: '#FDFEFF'
   }),
   getters: {
     getLanguageConfig(): LanguageType {
@@ -47,6 +50,9 @@ export const useConfigStore = defineStore('app-config', {
     },
     getTopbarTheme(): string {
       return this.topbarTheme
+    },
+    getMenuTheme(): string {
+      return this.menuTheme
     }
   },
   actions: {
@@ -70,6 +76,9 @@ export const useConfigStore = defineStore('app-config', {
     },
     setTopbarTheme(val: string) {
       this.topbarTheme = val
+    },
+    setMenuTheme(val: string) {
+      this.menuTheme = val
     }
   },
   persist: {
@@ -78,6 +87,8 @@ export const useConfigStore = defineStore('app-config', {
       changeComponentTheme(store.componentTheme)
       // 恢复顶栏主题色
       changeTopbarTheme(store.topbarTheme)
+      // 恢复菜单主题色
+      changeMenuTheme(store.menuTheme)
     }
   }
 })

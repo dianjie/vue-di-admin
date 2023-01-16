@@ -20,6 +20,7 @@
           <config-menu />
           <component-themes />
           <topbar-themes />
+          <menu-themes />
         </el-scrollbar>
       </div>
     </div>
@@ -34,6 +35,7 @@ import ConfigMenu from './ConfigMenu.vue'
 import ConfigTheme from './ConfigTheme.vue'
 import ComponentThemes from './ComponentThemes.vue'
 import TopbarThemes from './TopbarThemes.vue'
+import MenuThemes from './MenuThemes.vue'
 
 const drawer = ref(false)
 
