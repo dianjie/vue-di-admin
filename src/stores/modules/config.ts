@@ -3,26 +3,12 @@ import type { LanguageType, SizeType, MenuModeType } from '#/config'
 import { changeComponentTheme } from '@/hooks/web/useComponentTheme'
 import { changeTopbarTheme } from '@/hooks/web/useTopbarTheme'
 import { changeMenuTheme } from '@/hooks/web/useMenuTheme'
-interface ConfigState {
-  language: LanguageType
-  size: SizeType
-  sideMenu: boolean
-  menuMode: MenuModeType
-  componentTheme: string
-  topbarTheme: string
-  menuTheme: string
-}
+import { defaultSettings, type ConfigState } from '@/config/design'
 
 export const useConfigStore = defineStore('app-config', {
-  state: (): ConfigState => ({
-    language: 'zh-cn',
-    size: 'default',
-    sideMenu: true,
-    menuMode: 'default',
-    componentTheme: '#409EFF',
-    topbarTheme: '#FFFFFF',
-    menuTheme: '#FDFEFF'
-  }),
+  state: (): ConfigState => {
+    return defaultSettings
+  },
   getters: {
     getLanguageConfig(): LanguageType {
       return this.language
@@ -56,6 +42,15 @@ export const useConfigStore = defineStore('app-config', {
     }
   },
   actions: {
+    reset() {
+      this.$reset()
+      // 恢复自定义主题色
+      changeComponentTheme(null)
+      // 恢复顶栏主题色
+      changeTopbarTheme(null)
+      // 恢复菜单主题色
+      changeMenuTheme(null)
+    },
     setLanguageConfig(val: LanguageType) {
       this.language = val
     },

@@ -1,3 +1,24 @@
+import type { LanguageType, SizeType, MenuModeType } from '#/config'
+export interface ConfigState {
+  language: LanguageType
+  size: SizeType
+  sideMenu: boolean
+  menuMode: MenuModeType
+  componentTheme: string
+  topbarTheme: string
+  menuTheme: string
+}
+
+export const defaultSettings: ConfigState = {
+  language: 'zh-cn',
+  size: 'default',
+  sideMenu: true,
+  menuMode: 'default',
+  componentTheme: '#409EFF',
+  topbarTheme: '#FFFFFF',
+  menuTheme: '#FDFEFF'
+}
+
 // css 前缀
 export const prefix = 'di'
 

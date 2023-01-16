@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import './styles/index.less'
+import 'element-plus/es/components/message/style/css'
 
 import App from './App.vue'
 import router from './router'

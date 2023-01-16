@@ -21,6 +21,7 @@
           <component-themes />
           <topbar-themes />
           <menu-themes />
+          <design-handle />
         </el-scrollbar>
       </div>
     </div>
@@ -36,6 +37,7 @@ import ConfigTheme from './ConfigTheme.vue'
 import ComponentThemes from './ComponentThemes.vue'
 import TopbarThemes from './TopbarThemes.vue'
 import MenuThemes from './MenuThemes.vue'
+import DesignHandle from './DesignHandle.vue'
 
 const drawer = ref(false)
 
