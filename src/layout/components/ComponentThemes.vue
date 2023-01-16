@@ -15,13 +15,16 @@
         [`${prefixCls}-item--${unref(size)}`]: true
       }"
       :key="item.name"
+      :title="item.name"
       @click="handleChangeTheme(item.color)"
     >
       <div :class="blockCls">
         <div :class="`${prefixCls}-block__inner`" :style="{ 'background-color': item.color }"></div>
       </div>
     </div>
-    <el-color-picker v-model="store.componentTheme" @change="changeComponentTheme" />
+    <div title="custom">
+      <el-color-picker v-model="store.componentTheme" @change="changeComponentTheme" />
+    </div>
   </div>
 </template>
 
@@ -59,64 +62,4 @@ const handleChangeTheme = (color: string) => {
 }
 </script>
 
-<style lang="less" scoped>
-@prefix-cls: ~'@{prefix-var}-theme-color';
-
-.@{prefix-cls} {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin-right: -10px;
-  margin-left: -10px;
-  margin-top: -10px;
-
-  :deep(.el-color-picker__color) {
-    border-color: transparent !important;
-  }
-
-  &--not-custom {
-    :deep(.el-color-picker__trigger) {
-      border-color: transparent !important;
-    }
-  }
-
-  &-item {
-    border: 1px solid transparent;
-    box-sizing: border-box;
-    border-radius: 4px;
-
-    &--small {
-      height: 24px;
-      width: 24px;
-    }
-
-    &--default {
-      height: 32px;
-      width: 32px;
-    }
-
-    &--large {
-      height: 40px;
-      width: 40px;
-    }
-
-    &--active {
-      border: 1px solid var(--el-border-color);
-    }
-  }
-
-  &-block {
-    padding: 5px;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 4px;
-
-    &__inner {
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-</style>
+<style lang="less" scoped></style>

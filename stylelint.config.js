@@ -8,7 +8,13 @@ module.exports = {
   customSyntax: 'postcss-html',
   rules: {
     'no-empty-source': null,
-    'selector-class-pattern': null
+    'selector-class-pattern': null,
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['global', 'deep']
+      }
+    ]
   },
   overrides: [
     {
