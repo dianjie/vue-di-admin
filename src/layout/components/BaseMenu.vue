@@ -77,9 +77,12 @@ const modeProp = computed(() => {
   top: var(--di-header-height);
   z-index: 100;
   transform: none;
+  box-shadow: 2px 0 4px -1px rgb(0 0 0 / 20%), 4px 0 5px 0 rgb(0 0 0 / 14%),
+    1px 0 10px 0 rgb(0 0 0 / 12%);
 
   :deep(.el-menu) {
     height: 100%;
+    border-right: 0;
   }
 
   :deep(.el-sub-menu__title) {
