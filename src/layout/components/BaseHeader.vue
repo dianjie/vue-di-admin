@@ -2,13 +2,7 @@
   <header :class="headerCls">
     <div :class="`${prefixCls}-logo`">
       <h1 :class="`${prefixCls}-logo__title`">Di Admin</h1>
-      <el-button
-        v-if="!menuModeIsHorizontal"
-        :class="handleCls"
-        type="warning"
-        circle
-        @click="toggleSideMenu"
-      >
+      <el-button v-if="!menuModeIsHorizontal" :class="handleCls" circle @click="toggleSideMenu">
         <template #icon>
           <i-ep-arrow-left />
         </template>
@@ -85,12 +79,13 @@ const navToGitHub = () => {
   display: flex;
   width: 100%;
   align-items: center;
-  border-bottom: 1px solid var(--el-border-color);
   height: var(--di-header-height);
   min-height: 35px;
   background-color: var(--di-header-bg-color);
   color: var(--di-header-text-color);
   transition: height linear 0.2s;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 12%), 0 4px 5px rgb(0 0 0 / 14%),
+    0 2px 4px -1px rgb(0 0 0 / 20%) !important;
 
   &--fixed {
     position: fixed;
@@ -107,6 +102,16 @@ const navToGitHub = () => {
     }
 
     .side-menu-handle {
+      --el-button-bg-color: var(--di-header-text-color);
+      --el-button-border-color: var(--di-header-text-color);
+      --el-button-text-color: var(--di-header-bg-color);
+      --el-button-hover-text-color: var(--di-header-bg-color);
+      --el-button-hover-bg-color: var(--di-header-text-color);
+      --el-button-hover-border-color: var(--di-header-text-color);
+      --el-button-active-text-color: var(--el-button-hover-text-color);
+      --el-button-active-border-color: var(--di-header-text-color);
+      --el-button-active-bg-color: var(--el-button-hover-bg-color);
+
       position: absolute;
       left: calc(var(--di-menu-side-width) - calc(var(--el-button-size) / 2));
       top: calc(var(--di-header-height) / 2 - calc(var(--el-button-size) / 2));
