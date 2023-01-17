@@ -31,6 +31,9 @@ export const useConfigStore = defineStore('app-config', {
     menuModeIsHorizontal(): boolean {
       return this.menuMode === 'horizontal'
     },
+    menuModeIsCollapse(): boolean {
+      return this.menuMode === 'collapse'
+    },
     getComponentTheme(): string {
       return this.componentTheme
     },

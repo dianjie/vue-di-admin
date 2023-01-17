@@ -22,13 +22,14 @@ const { prefixCls } = useDesign('layout-main')
 const sideMenu = inject<boolean>('sideMenu')
 
 const store = useConfigStore()
-const { menuModeIsDefault, menuModeIsHorizontal } = storeToRefs(store)
+const { menuModeIsDefault, menuModeIsHorizontal, menuModeIsCollapse } = storeToRefs(store)
 
 const classCls = computed(() => [
   {
     [prefixCls]: true,
     [`${prefixCls}--left-spacing`]: unref(menuModeIsDefault) && unref(sideMenu),
-    [`${prefixCls}--horizontal`]: unref(menuModeIsHorizontal)
+    [`${prefixCls}--horizontal`]: unref(menuModeIsHorizontal),
+    [`${prefixCls}--collapse-spacing`]: unref(menuModeIsCollapse)
   }
 ])
 </script>
@@ -45,6 +46,11 @@ const classCls = computed(() => [
 
   &--left-spacing {
     margin-left: var(--di-menu-side-width);
+    transition: margin-left 0.2s;
+  }
+
+  &--collapse-spacing {
+    margin-left: calc(var(--el-menu-icon-width) + var(--el-menu-base-level-padding) * 2);
     transition: margin-left 0.2s;
   }
 

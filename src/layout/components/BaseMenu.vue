@@ -1,6 +1,6 @@
 <template>
   <div :class="classCls">
-    <el-menu default-active="2" :mode="modeProp">
+    <el-menu default-active="2" :mode="modeProp" :collapse="menuModeIsCollapse">
       <el-sub-menu index="1">
         <template #title>
           <el-icon><i-ep-location /></el-icon>
@@ -44,14 +44,16 @@ const { prefixCls } = useDesign('menu-wrapper')
 
 const sideMenu = inject<boolean>('sideMenu')
 const store = useConfigStore()
-const { menuModeIsDefault, menuModeIsOverlay, menuModeIsHorizontal } = storeToRefs(store)
+const { menuModeIsDefault, menuModeIsOverlay, menuModeIsHorizontal, menuModeIsCollapse } =
+  storeToRefs(store)
 
 const classCls = computed(() => [
   {
     [prefixCls]: true,
     [`${prefixCls}--default`]: unref(menuModeIsDefault) && !unref(sideMenu),
     [`${prefixCls}--overlay`]: unref(menuModeIsOverlay) && !unref(sideMenu),
-    [`${prefixCls}--horizontal`]: unref(menuModeIsHorizontal)
+    [`${prefixCls}--horizontal`]: unref(menuModeIsHorizontal),
+    [`${prefixCls}--collapse`]: unref(menuModeIsCollapse)
   }
 ])
 
@@ -85,10 +87,6 @@ const modeProp = computed(() => {
     border-right: 0;
   }
 
-  :deep(.el-sub-menu__title) {
-    padding-left: 0;
-  }
-
   &--default,
   &--overlay {
     transform: translate3d(calc(-1 * var(--di-menu-side-width)), 0, 0);
@@ -106,6 +104,14 @@ const modeProp = computed(() => {
     :deep(.el-menu) {
       padding: 0 1rem;
     }
+
+    :deep(.el-sub-menu__title) {
+      padding-left: 0;
+    }
+  }
+
+  &--collapse {
+    width: calc(var(--el-menu-icon-width) + var(--el-menu-base-level-padding) * 2);
   }
 }
 </style>

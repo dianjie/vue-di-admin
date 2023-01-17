@@ -2,7 +2,12 @@
   <header :class="headerCls">
     <div :class="`${prefixCls}-logo`">
       <h1 :class="`${prefixCls}-logo__title`">Di Admin</h1>
-      <el-button v-if="!menuModeIsHorizontal" :class="handleCls" circle @click="toggleSideMenu">
+      <el-button
+        v-if="!menuModeIsHorizontal && !menuModeIsCollapse"
+        :class="handleCls"
+        circle
+        @click="toggleSideMenu"
+      >
         <template #icon>
           <i-ep-arrow-left />
         </template>
@@ -43,7 +48,7 @@ const headerCls = computed(() => [
 ])
 
 const configStore = useConfigStore()
-const { menuModeIsHorizontal } = storeToRefs(configStore)
+const { menuModeIsHorizontal, menuModeIsCollapse } = storeToRefs(configStore)
 
 const sideMenu = inject<boolean>('sideMenu')
 
@@ -113,8 +118,8 @@ const navToGitHub = () => {
       --el-button-active-bg-color: var(--el-button-hover-bg-color);
 
       position: absolute;
-      left: calc(var(--di-menu-side-width) - calc(var(--el-button-size) / 2));
-      top: calc(var(--di-header-height) / 2 - calc(var(--el-button-size) / 2));
+      left: calc(var(--di-menu-side-width) - (var(--el-button-size) / 2));
+      top: calc(var(--di-header-height) / 2 - (var(--el-button-size) / 2));
       transition: width linear 0.2s, height linear 0.2s;
 
       :deep(.el-icon) {
