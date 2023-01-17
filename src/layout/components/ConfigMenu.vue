@@ -10,8 +10,19 @@
 
 <script setup lang="ts">
 import { useConfigStore } from '@/stores/modules/config'
+import { watch } from 'vue'
 // https://github.com/vuejs/pinia/discussions/854
 const store = useConfigStore()
+
+watch(
+  () => store.menuMode,
+  (newValue) => {
+    // 切换菜单模式为默认、抽屉，如果隐藏了就显示
+    if (['default', 'overlay'].includes(newValue) && !store.sideMenu) {
+      store.setSideMenuConfig(!store.sideMenu)
+    }
+  }
+)
 </script>
 
 <style scoped></style>
