@@ -31,7 +31,11 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       vue(),
       vueJsx(),
       AutoImport({
-        resolvers: [ElementPlusResolver()]
+        resolvers: [ElementPlusResolver()],
+        eslintrc: {
+          enabled: true
+        },
+        dts: './types/auto-imports.d.ts'
       }),
       Components({
         resolvers: [
@@ -39,7 +43,8 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           // https://github.com/antfu/unplugin-icons
           // 自动注册图标组件
           IconsResolver()
-        ]
+        ],
+        dts: './types/components.d.ts'
       }),
       Icons({
         autoInstall: true

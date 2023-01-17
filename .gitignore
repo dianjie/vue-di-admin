@@ -34,3 +34,4 @@ yarn.lock
 pnpm-lock.yaml
 auto-imports.d.ts
 components.d.ts
+.eslintrc-auto-import.json

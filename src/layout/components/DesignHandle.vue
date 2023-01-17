@@ -19,7 +19,6 @@
 <script setup lang="ts">
 import { useConfigStore } from '@/stores/modules/config'
 import { useClipboard, useDebounceFn } from '@vueuse/core'
-import { ElMessage } from 'element-plus'
 import { unref } from 'vue'
 
 const store = useConfigStore()
