@@ -4,10 +4,11 @@ import { changeComponentTheme } from '@/hooks/web/useComponentTheme'
 import { changeTopbarTheme } from '@/hooks/web/useTopbarTheme'
 import { changeMenuTheme } from '@/hooks/web/useMenuTheme'
 import { defaultSettings, type ConfigState } from '@/config/design'
+import { isDark } from '@/hooks/web/useDark'
 
 export const useConfigStore = defineStore('app-config', {
   state: (): ConfigState => {
-    return defaultSettings
+    return { ...defaultSettings }
   },
   getters: {
     getLanguageConfig(): LanguageType {
@@ -46,6 +47,7 @@ export const useConfigStore = defineStore('app-config', {
   },
   actions: {
     reset() {
+      isDark.value = false
       this.$reset()
       // 恢复自定义主题色
       changeComponentTheme(null)
