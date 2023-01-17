@@ -22,7 +22,7 @@ export const getHoverBgColor = (hex: string) => {
 export const changeMenuTheme = (color: string | null) => {
   let defaultColor = ''
   if (isDark.value) {
-    defaultColor = '#434b54'
+    defaultColor = '#151515'
   } else {
     defaultColor = '#fdfeff'
   }
@@ -33,13 +33,6 @@ export const changeMenuTheme = (color: string | null) => {
     return
   }
   const lowerCaseColor = color.toLocaleLowerCase()
-  if (lowerCaseColor === defaultColor) {
-    css.value = ''
-    if (isLoaded.value) {
-      unload()
-    }
-    return
-  }
   let temp = `--el-menu-bg-color:${lowerCaseColor} !important;--el-menu-text-color:${getTextColor(
     lowerCaseColor
   )} !important;--el-menu-hover-bg-color:${getHoverBgColor(lowerCaseColor)} !important;`

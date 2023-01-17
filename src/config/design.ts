@@ -66,7 +66,7 @@ export const topbarThemes = [
 
 export const menuThemes = [
   { name: 'light', color: '#FDFEFF' },
-  { name: 'dark', color: '#434B54' },
+  { name: 'dark', color: '#151515' },
   { name: 'indigo', color: '#1A237E' },
   { name: 'bluegrey', color: '#37474F' },
   { name: 'brown', color: '#4E342E' },
