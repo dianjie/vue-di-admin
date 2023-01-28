@@ -9,7 +9,7 @@
         @click="toggleSideMenu"
       >
         <template #icon>
-          <i-ep-arrow-left />
+          <i-ep-arrow-right />
         </template>
       </el-button>
     </div>
