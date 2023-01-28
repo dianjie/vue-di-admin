@@ -8,6 +8,8 @@ export interface ConfigState {
   topbarTheme: string
   menuTheme: string
   sidebarFixed: boolean
+  grayMode: boolean
+  colorWeak: boolean
 }
 
 export const defaultSettings: ConfigState = {
@@ -18,7 +20,9 @@ export const defaultSettings: ConfigState = {
   componentTheme: '#409EFF',
   topbarTheme: '#FFFFFF',
   menuTheme: '#FDFEFF',
-  sidebarFixed: false
+  sidebarFixed: false,
+  grayMode: false,
+  colorWeak: false
 }
 
 // css 前缀

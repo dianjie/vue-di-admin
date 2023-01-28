@@ -6,6 +6,7 @@ import { changeMenuTheme } from '@/hooks/web/useMenuTheme'
 import { defaultSettings, type ConfigState } from '@/config/design'
 import { isDark } from '@/hooks/web/useDark'
 import { sidebarFixedChange } from '@/hooks/web/useSidebarFixed'
+import { toggleClass } from '@/utils/toggleClass'
 
 export const useConfigStore = defineStore('app-config', {
   state: (): ConfigState => {
@@ -56,6 +57,10 @@ export const useConfigStore = defineStore('app-config', {
       changeTopbarTheme(null)
       // 恢复菜单主题色
       changeMenuTheme(null)
+
+      toggleClass(false, 'gray-mode')
+
+      toggleClass(false, 'color-weak')
     },
     setLanguageConfig(val: LanguageType) {
       this.language = val
@@ -92,6 +97,16 @@ export const useConfigStore = defineStore('app-config', {
       changeMenuTheme(store.menuTheme)
       // 恢复侧边菜单固定
       sidebarFixedChange(store, store.sidebarFixed)
+
+      if (store.grayMode) {
+        toggleClass(store.grayMode, 'gray-mode')
+        toggleClass(false, 'color-weak')
+      }
+
+      if (store.colorWeak) {
+        toggleClass(store.colorWeak, 'color-weak')
+        toggleClass(false, 'gray-mode')
+      }
     }
   }
 })

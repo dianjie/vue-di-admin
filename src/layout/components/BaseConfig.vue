@@ -22,6 +22,7 @@
           <topbar-themes />
           <menu-themes />
           <interface-function />
+          <interface-display />
           <design-handle />
         </el-scrollbar>
       </div>
@@ -40,6 +41,7 @@ import TopbarThemes from './TopbarThemes.vue'
 import MenuThemes from './MenuThemes.vue'
 import DesignHandle from './DesignHandle.vue'
 import InterfaceFunction from './InterfaceFunction.vue'
+import InterfaceDisplay from './InterfaceDisplay.vue'
 
 const drawer = ref(false)
 

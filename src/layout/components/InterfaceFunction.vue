@@ -22,12 +22,4 @@ const sidebarFixedDisabled = computed(() => {
 })
 </script>
 
-<style lang="less" scoped>
-.justify-between {
-  justify-content: space-between;
-}
-
-.my-4 {
-  margin: 16px 0;
-}
-</style>
+<style lang="less" scoped></style>

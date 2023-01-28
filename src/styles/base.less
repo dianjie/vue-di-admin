@@ -24,6 +24,14 @@ body {
   // Firefox 等浏览器标准支持的滚动条样式设置
   scrollbar-color: var(--di-scrollbar-color) transparent;
   scrollbar-width: thin;
+
+  &.color-weak {
+    filter: invert(80%);
+  }
+
+  &.gray-mode {
+    filter: grayscale(100%);
+  }
 }
 
 // Safari/Chrome 中滚动条样式设置
@@ -53,4 +61,12 @@ body {
 
 .flex-nowrap {
   flex-wrap: nowrap !important;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.my-4 {
+  margin: 16px 0;
 }
