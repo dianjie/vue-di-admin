@@ -62,12 +62,4 @@ const handleChangeTheme = (color: string) => {
 }
 </script>
 
-<style lang="less" scoped>
-@prefix-cls: ~'@{prefix-var}-theme-color';
-
-.@{prefix-cls} {
-  :deep(.el-color-picker .el-color-picker__icon) {
-    color: var(--di-header-text-color);
-  }
-}
-</style>
+<style lang="less" scoped></style>
