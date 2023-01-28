@@ -5,6 +5,7 @@ import { changeTopbarTheme } from '@/hooks/web/useTopbarTheme'
 import { changeMenuTheme } from '@/hooks/web/useMenuTheme'
 import { defaultSettings, type ConfigState } from '@/config/design'
 import { isDark } from '@/hooks/web/useDark'
+import { sidebarFixedChange } from '@/hooks/web/useSidebarFixed'
 
 export const useConfigStore = defineStore('app-config', {
   state: (): ConfigState => {
@@ -89,6 +90,8 @@ export const useConfigStore = defineStore('app-config', {
       changeTopbarTheme(store.topbarTheme)
       // 恢复菜单主题色
       changeMenuTheme(store.menuTheme)
+      // 恢复侧边菜单固定
+      sidebarFixedChange(store, store.sidebarFixed)
     }
   }
 })

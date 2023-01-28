@@ -2,12 +2,7 @@
   <header :class="headerCls">
     <div :class="`${prefixCls}-logo`">
       <h1 :class="`${prefixCls}-logo__title`">Di Admin</h1>
-      <el-button
-        v-if="!menuModeIsHorizontal && !menuModeIsCollapse"
-        :class="handleCls"
-        circle
-        @click="toggleSideMenu"
-      >
+      <el-button v-if="hasToggleSideMenu" :class="handleCls" circle @click="toggleSideMenu">
         <template #icon>
           <i-ep-arrow-right />
         </template>
@@ -48,7 +43,13 @@ const headerCls = computed(() => [
 ])
 
 const configStore = useConfigStore()
-const { menuModeIsHorizontal, menuModeIsCollapse } = storeToRefs(configStore)
+const {
+  menuModeIsHorizontal,
+  menuModeIsCollapse,
+  menuModeIsDefault,
+  menuModeIsOverlay,
+  sidebarFixed
+} = storeToRefs(configStore)
 
 const sideMenu = inject<boolean>('sideMenu')
 
@@ -76,6 +77,21 @@ const iconBtnCls = computed(() => [
 const navToGitHub = () => {
   window.open(pgk.homepage)
 }
+
+const hasToggleSideMenu = computed(() => {
+  const temp = !unref(menuModeIsHorizontal) && !unref(menuModeIsCollapse)
+  if (unref(sidebarFixed)) {
+    if (unref(menuModeIsDefault)) {
+      return false
+    }
+    if (unref(menuModeIsOverlay)) {
+      return true
+    }
+    return temp
+  } else {
+    return temp
+  }
+})
 </script>
 
 <style lang="less" scoped>

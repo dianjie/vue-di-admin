@@ -7,6 +7,7 @@ export interface ConfigState {
   componentTheme: string
   topbarTheme: string
   menuTheme: string
+  sidebarFixed: boolean
 }
 
 export const defaultSettings: ConfigState = {
@@ -16,7 +17,8 @@ export const defaultSettings: ConfigState = {
   menuMode: 'default',
   componentTheme: '#409EFF',
   topbarTheme: '#FFFFFF',
-  menuTheme: '#FDFEFF'
+  menuTheme: '#FDFEFF',
+  sidebarFixed: false
 }
 
 // css 前缀
