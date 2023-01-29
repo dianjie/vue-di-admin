@@ -7,6 +7,7 @@ export interface ConfigState {
   componentTheme: string
   topbarTheme: string
   menuTheme: string
+  bgColorTheme: string
   sidebarFixed: boolean
   grayMode: boolean
   colorWeak: boolean
@@ -20,6 +21,7 @@ export const defaultSettings: ConfigState = {
   componentTheme: '#409EFF',
   topbarTheme: '#FFFFFF',
   menuTheme: '#FDFEFF',
+  bgColorTheme: '#F0F2F5',
   sidebarFixed: false,
   grayMode: false,
   colorWeak: false
@@ -83,4 +85,9 @@ export const menuThemes = [
   { name: 'pink', color: '#880E4F' },
   { name: 'purple', color: '#6A1B9A' },
   { name: 'teal', color: '#00695C' }
+]
+
+export const bgColorThemes = [
+  { name: 'light', color: '#F0F2F5' },
+  { name: 'dark', color: '#2A2C2C' }
 ]

@@ -3,6 +3,7 @@ import { changeComponentTheme } from './useComponentTheme'
 import { changeTopbarTheme } from './useTopbarTheme'
 import { changeMenuTheme } from './useMenuTheme'
 import { useConfigStore } from '@/stores/modules/config'
+import { changeBgColorTheme } from '@/hooks/web/useBgColorTheme'
 
 export const isDark = useDark()
 export const toggleDark = () => {
@@ -12,4 +13,5 @@ export const toggleDark = () => {
   // 重置回默认的
   changeTopbarTheme(null)
   changeMenuTheme(null)
+  changeBgColorTheme(null)
 }

@@ -1,12 +1,14 @@
 <template>
   <div :class="classCls">
-    <router-view>
-      <template #default="{ Component, route }">
-        <keep-alive>
-          <component :is="Component" :key="route.fullPath" />
-        </keep-alive>
-      </template>
-    </router-view>
+    <div :class="`${prefixCls}-content`">
+      <router-view>
+        <template #default="{ Component, route }">
+          <keep-alive>
+            <component :is="Component" :key="route.fullPath" />
+          </keep-alive>
+        </template>
+      </router-view>
+    </div>
   </div>
 </template>
 
@@ -43,6 +45,11 @@ const classCls = computed(() => [
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+
+  &-content {
+    padding: 1rem;
+    background-color: var(--di-content-bg-color);
+  }
 
   &--left-spacing {
     margin-left: var(--di-menu-side-width);

@@ -7,6 +7,7 @@ import { defaultSettings, type ConfigState } from '@/config/design'
 import { isDark } from '@/hooks/web/useDark'
 import { sidebarFixedChange } from '@/hooks/web/useSidebarFixed'
 import { toggleClass } from '@/utils/toggleClass'
+import { changeBgColorTheme } from '@/hooks/web/useBgColorTheme'
 
 export const useConfigStore = defineStore('app-config', {
   state: (): ConfigState => {
@@ -45,6 +46,9 @@ export const useConfigStore = defineStore('app-config', {
     },
     getMenuTheme(): string {
       return this.menuTheme
+    },
+    getBgColorTheme(): string {
+      return this.bgColorTheme
     }
   },
   actions: {
@@ -57,6 +61,8 @@ export const useConfigStore = defineStore('app-config', {
       changeTopbarTheme(null)
       // 恢复菜单主题色
       changeMenuTheme(null)
+      // 恢复内容背景主题色
+      changeBgColorTheme(null)
 
       toggleClass(false, 'gray-mode')
 
@@ -85,6 +91,9 @@ export const useConfigStore = defineStore('app-config', {
     },
     setMenuTheme(val: string) {
       this.menuTheme = val
+    },
+    setBgColorTheme(val: string) {
+      this.bgColorTheme = val
     }
   },
   persist: {
@@ -95,6 +104,8 @@ export const useConfigStore = defineStore('app-config', {
       changeTopbarTheme(store.topbarTheme)
       // 恢复菜单主题色
       changeMenuTheme(store.menuTheme)
+      // 恢复内容背景主题色
+      changeBgColorTheme(store.bgColorTheme)
       // 恢复侧边菜单固定
       sidebarFixedChange(store, store.sidebarFixed)
 

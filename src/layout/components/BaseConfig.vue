@@ -21,6 +21,7 @@
           <component-themes />
           <topbar-themes />
           <menu-themes />
+          <bg-color-themes />
           <interface-function />
           <interface-display />
           <design-handle />
@@ -42,6 +43,7 @@ import MenuThemes from './MenuThemes.vue'
 import DesignHandle from './DesignHandle.vue'
 import InterfaceFunction from './InterfaceFunction.vue'
 import InterfaceDisplay from './InterfaceDisplay.vue'
+import BgColorThemes from './BgColorThemes.vue'
 
 const drawer = ref(false)
 
@@ -115,7 +117,7 @@ const toggleDrawer = () => {
     left: 0;
     width: 100%;
     height: 0;
-    background-color: rgb(0 0 0 / 45%);
+    background-color: rgb(13 13 13 / 45%);
     opacity: 0;
     pointer-events: none;
   }
