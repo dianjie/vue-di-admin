@@ -105,8 +105,7 @@ const hasToggleSideMenu = computed(() => {
   background-color: var(--di-header-bg-color);
   color: var(--di-header-text-color);
   transition: height linear 0.2s;
-  box-shadow: 0 1px 10px rgb(0 0 0 / 12%), 0 4px 5px rgb(0 0 0 / 14%),
-    0 2px 4px -1px rgb(0 0 0 / 20%) !important;
+  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
 
   &--fixed {
     position: fixed;
