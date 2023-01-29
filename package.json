@@ -1,13 +1,13 @@
 {
-  "name": "vue-dianjie-admin",
+  "name": "vue-di-admin",
   "author": {
     "name": "dianjie",
     "email": "dianjie1022@gmail.com",
     "url": "https://github.com/dianjie"
   },
-  "repository": "https://github.com/dianjie/vue-dianjie-admin.git",
-  "bugs": "https://github.com/dianjie/vue-dianjie-admin/issues",
-  "homepage": "https://github.com/dianjie/vue-dianjie-admin",
+  "repository": "https://github.com/dianjie/vue-di-admin.git",
+  "bugs": "https://github.com/dianjie/vue-di-admin/issues",
+  "homepage": "https://github.com/dianjie/vue-di-admin",
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
   },
