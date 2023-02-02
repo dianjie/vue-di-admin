@@ -1,0 +1,1 @@
+import{_ as r}from"./plugin-vue_export-helper-c27b6911.js";import{C as t,K as a,al as n,M as s,G as c}from"./index-57b1df17.js";const o={};function _(d,f){return t(),a(s,null,n(166,e=>c("div",{key:e}," 哈哈哈，欢迎使用 ")),64)}const m=r(o,[["render",_]]);export{m as default};
