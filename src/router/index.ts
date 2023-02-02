@@ -1,4 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { LONGIN_NAME, LOGIN_PATH } from './constant'
+
 const Layout = () => import('@/layout/index.vue')
 
 const router = createRouter({
@@ -16,6 +18,11 @@ const router = createRouter({
           component: () => import('@/views/welcome/index.vue')
         }
       ]
+    },
+    {
+      path: LOGIN_PATH,
+      name: LONGIN_NAME,
+      component: () => import('@/views/login/index.vue')
     }
   ]
 })
